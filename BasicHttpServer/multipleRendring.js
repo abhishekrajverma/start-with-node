@@ -11,6 +11,10 @@ const myServer = http.createServer((req,res)=>{
         case '/':
             filePath ='./index.html';
             break;
+        case '/profile':
+            filePath = '/profile.html'
+        case '/home':
+            filePath = '/home.html'
         default:
             filePath = '/404.html';
     }
