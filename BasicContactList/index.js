@@ -1,10 +1,16 @@
 const express = require('express');
 const { error } = require('jquery');
+const http = require('http');
 
 const app = express();
 app.get('/', function(req,res){
-    res.send('Cool! it is running')
-})
+    res.send('<h1>Cool! it is running</h1>')
+});
+app.get('/profile', function(req,res){
+    res.send('<h1>Welcome To My Profile</h1>')
+});
+
+//const myServer = http.createServer(app);
 
 
 
