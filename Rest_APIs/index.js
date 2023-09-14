@@ -4,9 +4,6 @@ const users = require('./MOCK_DATA.json');
 const app = exprees();
 const PORT = 8000;
 
-app.get('/users', (req, res) =>{
-    return res.json(users);
-})
 app.get('/api/users', (req, res) =>{
     const html = `
     <ul>
@@ -15,6 +12,18 @@ app.get('/api/users', (req, res) =>{
     `
     res.send(html);
 })
+
+//Routes
+app.get('/users', (req, res) =>{
+    return res.json(users);
+});
+
+//2nd task
+app.get('/api/users/:id', (req,res) =>{
+    const id = Number(req.params.id);
+    const user = users.find((user) => user.id === id)
+    return res.json(user);
+});
 
 
 
