@@ -4,7 +4,7 @@ const users = require('./MOCK_DATA.json');
 const app = exprees();
 const PORT = 8000;
 
-app.get('/api/users', (req, res) =>{
+app.get('/users', (req, res) =>{
     const html = `
     <ul>
     ${users.map((user) => `<li>${user.first_name}</li>`).join("")}
@@ -14,7 +14,7 @@ app.get('/api/users', (req, res) =>{
 })
 
 //Routes
-app.get('/users', (req, res) =>{
+app.get('/api/users', (req, res) =>{
     return res.json(users);
 });
 
