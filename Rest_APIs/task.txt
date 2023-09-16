@@ -3,8 +3,14 @@ REST API
 GET /users - HTML Document Render (for browser)
 GET /api/users - List all users JSON(this is for mobile developer )
 
+
+//This is dynamic path parameters
 GET /api/users/1 - Get the user with ID 1
 GET /api/users/2 - Gte the user with ID 2
+
+Dynamic Path parameters
+GET /api/users/:id
+:id -> Variable | Dynamic
 
 POST /api/users - create new User
 
