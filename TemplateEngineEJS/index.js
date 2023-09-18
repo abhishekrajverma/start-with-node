@@ -5,6 +5,8 @@ const PORT = 8000;
 const app = exprees();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+//middleware
+app.use(exprees.urlencoded());
 
 var contactList = [
   {
@@ -34,21 +36,31 @@ app.get("/users", (req, res) => {
 app.get("/contact", (req, res) => {
   return res.render("contact", {
     title: "My Contact List",
-    Contact: contactList
+    Contact: contactList,
   });
 });
 
-app.post('/create-contact', (req, res)=>{
-  return res.redirect('/home')
+//post
+app.post("/create-contact", (req, res) => {
+    contactList.push({
+      name: req.body.name,
+      phone: req.body.phone
+    })
+    //short way to write because body has contain name and phone also
+    // contactList.push(req.body);
+  return res.redirect("/contact");
+  
 
-})
+});
 //Routes
 app.get("/home", (req, res) => {
-  return res.render("home", { title: "My Home" });
+  return res.render("home", {
+    title: "My Home",
+  });
 });
 
-//2nd task
-app.get("/api/users/:id", (req, res) => {});
+
+
 
 app.listen(PORT, () => {
   console.log(`Express server started:${PORT}`);
