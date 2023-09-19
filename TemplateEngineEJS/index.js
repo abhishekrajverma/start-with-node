@@ -1,3 +1,4 @@
+const { log } = require("console");
 const exprees = require("express");
 const path = require("path");
 const PORT = 8000;
@@ -9,13 +10,16 @@ app.set("views", path.join(__dirname, "views"));
 app.use(exprees.urlencoded());
 //middleware 1
 app.use((req, res, next) => {
-  console.log("hello from middleware 1");
+  //manipulate the req
+  req.myName = "Abhishek";
+  //console.log("hello from middleware 1");
   next();
 });
 
 //middleware 2
 app.use((req, res, next) => {
-  console.log("hello from middleware 2");
+  console.log("middleware 2 calling :", req.myName);
+  //console.log("hello from middleware 2");
   next();
 });
 
@@ -46,6 +50,7 @@ app.get("/users", (req, res) => {
 });
 
 app.get("/contact", (req, res) => {
+  console.log(`get method calling : ${req.myName}`);
   return res.render("contact", {
     title: "My Contact List",
     Contact: contactList,
