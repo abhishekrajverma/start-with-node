@@ -7,6 +7,11 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 //middleware
 app.use(exprees.urlencoded());
+//middleware 1
+app.use((req, res, next) => {
+  console.log("hello from middleware 1");
+  next();
+});
 
 var contactList = [
   {
@@ -42,15 +47,13 @@ app.get("/contact", (req, res) => {
 
 //post
 app.post("/create-contact", (req, res) => {
-    contactList.push({
-      name: req.body.name,
-      phone: req.body.phone
-    })
-    //short way to write because body has contain name and phone also
-    // contactList.push(req.body);
+  contactList.push({
+    name: req.body.name,
+    phone: req.body.phone,
+  });
+  //short way to write because body has contain name and phone also
+  // contactList.push(req.body);
   return res.redirect("/contact");
-  
-
 });
 //Routes
 app.get("/home", (req, res) => {
@@ -58,9 +61,6 @@ app.get("/home", (req, res) => {
     title: "My Home",
   });
 });
-
-
-
 
 app.listen(PORT, () => {
   console.log(`Express server started:${PORT}`);
