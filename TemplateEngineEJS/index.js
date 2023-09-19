@@ -13,6 +13,13 @@ app.use((req, res, next) => {
   next();
 });
 
+//middleware 2
+app.use((req, res, next) => {
+  console.log("hello from middleware 2");
+  next();
+});
+
+
 var contactList = [
   {
     name: "Abhishek Raj",
