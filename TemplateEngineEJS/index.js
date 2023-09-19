@@ -12,19 +12,19 @@ app.use(exprees.static('assets'));
 
 
 //middleware 1
-// app.use((req, res, next) => {
-//   //manipulate the req
-//   req.myName = "Abhishek";
-//   //console.log("hello from middleware 1");
-//   next();
-// });
+app.use((req, res, next) => {
+  //manipulate the req
+  req.myName = "Abhishek";
+  console.log("hello from middleware 1");
+  next();
+});
 
 //middleware 2
-// app.use((req, res, next) => {
-//   console.log("middleware 2 calling :", req.myName);
-//   //console.log("hello from middleware 2");
-//   next();
-// });
+app.use((req, res, next) => {
+  console.log("middleware 2 calling :", req.myName);
+  console.log("hello from middleware 2");
+  next();
+});
 
 
 var contactList = [
@@ -53,7 +53,7 @@ app.get("/users", (req, res) => {
 });
 
 app.get("/contact", (req, res) => {
-  //console.log(`get method calling : ${req.myName}`);
+  console.log(`get method calling : ${req.myName}`);
   return res.render("contact", {
     title: "My Contact List",
     Contact: contactList,
