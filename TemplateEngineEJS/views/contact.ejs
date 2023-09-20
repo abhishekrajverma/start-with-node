@@ -16,14 +16,21 @@
         <div class="list-container">
         <ul>
             <% for(let i of Contact){ %>
-                <li class="list">
-                    <div class="para">
+                <li class="contact">
+                    <div class="details">
                     <p>
                         <%= i.name %>
                     </p>
                     <p>
                         <%= i.phone %>
                     </p>
+                </div>
+                <div class="delete">
+                    <a href="/delete-contact/?phone=<%= i.phone %>">
+                        <i class="fa-solid fa-window-close"></i>
+
+                    </a>
+
                 </div>
                 </li>
                 <% } %>

@@ -76,6 +76,17 @@ app.get("/home", (req, res) => {
     title: "My Home",
   });
 });
+app.get('/delete-contact/' , (req,res) =>{
+  let phone =req.query.phone;
+
+  let contactIndex = contactList.findIndex((contact) => contact.phone == phone);
+
+  if(contactIndex != -1){
+    contactList.splice(contactIndex, 1);
+  }
+
+  return res.redirect('/contact');
+})
 
 app.listen(PORT, () => {
   console.log(`Express server started:${PORT}`);

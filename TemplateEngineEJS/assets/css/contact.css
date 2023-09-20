@@ -8,20 +8,39 @@ body {
 
 .list {
     list-style: none;
+    
 }
 
-.para {
-    display: flex;
-    justify-content: space-around;
-    border: 2px solid black;
-    border-style: dotted;
-    border-radius: 30px;
+.contact{
+    padding: 3px 10px;
+    border: 1px solid white;
     background-color: aquamarine;
+    box-shadow: 1px 1px 1px 1px lightpink;
+    color: white;
+    display: flex;
+}
+.contact .details{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 90%;
+    
+}
+.contact .delete{
+    width: 10%;
+    padding: 3px;
+    text-align: center;
+    margin-top: 3px;
+}
+.contact .delete a{
+    color: white;
+    background-color: red;
+}
+.contact p{
+    margin: 5px 0;
 }
 form{
     display: flex;
-    justify-content: space-evenly;
-}
-button{
-    background-color: navajowhite;
+    justify-content: center;
 }
