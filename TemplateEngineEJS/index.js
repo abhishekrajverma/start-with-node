@@ -15,19 +15,19 @@ app.use(exprees.urlencoded());
 app.use(exprees.static("assets"));
 
 //middleware 1
-app.use((req, res, next) => {
-  //manipulate the req
-  req.myName = "Abhishek";
-  console.log("hello from middleware 1");
-  next();
-});
+// app.use((req, res, next) => {
+//   //manipulate the req
+//   req.myName = "Abhishek";
+//   console.log("hello from middleware 1");
+//   next();
+// });
 
 //middleware 2
-app.use((req, res, next) => {
-  console.log("middleware 2 calling :", req.myName);
-  console.log("hello from middleware 2");
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log("middleware 2 calling :", req.myName);
+//   console.log("hello from middleware 2");
+//   next();
+// });
 
 var contactList = [
   {
@@ -55,7 +55,7 @@ app.get("/users", (req, res) => {
 });
 
 app.get("/contact", async (req, res) => {
-  console.log(`get method calling : ${req.myName}`);
+  //// console.log(`get method calling : ${req.myName}`);
   const result = await Contact.find({})
     return res.render("contact", {
       title: "My Contact List",
@@ -87,17 +87,25 @@ app.get("/home", (req, res) => {
 });
 
 //delete the contact
-app.get("/delete-contact/", (req, res) => {
-  let phone = req.query.phone;
+app.get("/delete-contact/",async (req, res) => {
 
-  let contactIndex = contactList.findIndex((contact) => contact.phone == phone);
+  //get the id from query in  the url
+  let id = req.query.id;
 
-  if (contactIndex != -1) {
-    contactList.splice(contactIndex, 1);
-  }
+ //// let contactIndex = contactList.findIndex((contact) => contact.phone == phone);
+
+  // //if (contactIndex != -1) {
+  //   //contactList.splice(contactIndex, 1);
+  // }
+
+  //find the contact in the database using id and delete
+
+  await Contact.findByIdAndDelete(id);
 
   return res.redirect("/contact");
 });
+
+
 
 app.listen(PORT, () => {
   console.log(`Express server started:${PORT}`);
