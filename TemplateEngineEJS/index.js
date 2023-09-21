@@ -3,18 +3,16 @@ const path = require("path");
 const PORT = 8000;
 
 const db = require("./config/mongoose");
-const Contact = require('./models/contact');
+const Contact = require("./models/contact");
 
 const app = exprees();
-
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 //middleware
 app.use(exprees.urlencoded());
 //serving our static files such as CSS, Images, javascript
-app.use(exprees.static('assets'));
-
+app.use(exprees.static("assets"));
 
 //middleware 1
 app.use((req, res, next) => {
@@ -30,7 +28,6 @@ app.use((req, res, next) => {
   console.log("hello from middleware 2");
   next();
 });
-
 
 var contactList = [
   {
@@ -57,41 +54,50 @@ app.get("/users", (req, res) => {
   });
 });
 
-app.get("/contact", (req, res) => {
+app.get("/contact", async (req, res) => {
   console.log(`get method calling : ${req.myName}`);
-  return res.render("contact", {
-    title: "My Contact List",
-    Contact: contactList,
+  const result = await Contact.find({})
+    return res.render("contact", {
+      title: "My Contact List",
+      Contact: result
   });
-});
+  
+  });
 
 //post
-app.post("/create-contact", (req, res) => {
-  contactList.push({
-    name: req.body.name,
-    phone: req.body.phone,
-  });
+app.post("/create-contact", async (req, res) => {
+  // contactList.push({
+  //   name: req.body.name,
+  //   phone: req.body.phone
+  // });
+
   //short way to write because body has contain name and phone also
   // contactList.push(req.body);
-  return res.redirect("/contact");
+
+  const result = await Contact.create(req.body);
+  console.log("results", result);
+  return res.status(201).redirect("/contact");
 });
+
 //Routes
 app.get("/home", (req, res) => {
   return res.render("home", {
     title: "My Home",
   });
 });
-app.get('/delete-contact/' , (req,res) =>{
-  let phone =req.query.phone;
+
+//delete the contact
+app.get("/delete-contact/", (req, res) => {
+  let phone = req.query.phone;
 
   let contactIndex = contactList.findIndex((contact) => contact.phone == phone);
 
-  if(contactIndex != -1){
+  if (contactIndex != -1) {
     contactList.splice(contactIndex, 1);
   }
 
-  return res.redirect('/contact');
-})
+  return res.redirect("/contact");
+});
 
 app.listen(PORT, () => {
   console.log(`Express server started:${PORT}`);
