@@ -2,7 +2,11 @@ const exprees = require("express");
 const path = require("path");
 const PORT = 8000;
 
+const db = require("./config/mongoose");
+
 const app = exprees();
+
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 //middleware
