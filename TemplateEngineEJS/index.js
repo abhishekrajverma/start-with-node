@@ -3,6 +3,7 @@ const path = require("path");
 const PORT = 8000;
 
 const db = require("./config/mongoose");
+const Contact = require('./models/contact');
 
 const app = exprees();
 
