@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const homeController = require('../controllers/home_controller');
 
-router.get('/',homeController.home);
+router.get('/home',homeController.home);
 
 //for any further routes, access from here
 //syntax- router.use('/routerName', './routerFile')
