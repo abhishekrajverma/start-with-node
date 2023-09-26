@@ -20,7 +20,7 @@ app.use(express.static('./assets'));
 app.use(express.urlencoded());
 
 //calling our cookie parse
-app.use(cookieParser())
+app.use(cookieParser());
 
 
 // app.use(expressLayouts);
