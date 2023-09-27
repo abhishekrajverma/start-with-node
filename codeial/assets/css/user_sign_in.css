@@ -1,6 +1,5 @@
+/* Center-align the form container */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f4f4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,60 +7,38 @@ body {
     margin: 0;
 }
 
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
-.login-box {
-    background-color: #ffffff;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    padding: 40px;
-    border-radius: 5px;
-}
-
-.login-box h2 {
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.textbox {
-    position: relative;
-    margin-bottom: 20px;
-}
-
-.textbox input {
-    width: 100%;
-    padding: 15px;
+/* Style the form container */
+form {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    outline: none;
-    font-size: 16px;
+    background-color: #f9f9f9;
+    text-align: center; /* Center-align form elements */
 }
 
-button {
-    background-color: #007BFF;
+/* Style the form inputs */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style the form button */
+input[type="submit"] {
+    background-color: #007bff;
     color: #fff;
+    padding: 10px 20px;
     border: none;
-    padding: 15px 20px;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
 }
 
-button:hover {
+/* Style the form button on hover */
+input[type="submit"]:hover {
     background-color: #0056b3;
-}
-
-.bottom-text a {
-    text-decoration: none;
-    color: #007BFF;
-}
-
-.bottom-text a:hover {
-    text-decoration: underline;
 }
