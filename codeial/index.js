@@ -1,24 +1,19 @@
 const express = require('express');
-
+const port = 8000;
 //require cookie-parse
 const cookieParser = require('cookie-parser');
-const app = express();
-const port = 8000;
-//const expressLayouts = require('express-ejs-layouts');
-
 //database setup
-// const db = require('./config/mongoose');
-
+const db = require('./config/mongoose');
 //model setup
-// const User = require("./models/user");
-
+const User = require("./models/user");
+const app = express();
+//const expressLayouts = require('express-ejs-layouts');
 
 //middleware
 // assets setup such as - css, images, and javascript
 app.use(express.static('./assets'));
 // 
 app.use(express.urlencoded());
-
 //calling our cookie parse
 app.use(cookieParser());
 
@@ -28,11 +23,8 @@ app.use(cookieParser());
 // app.set('layout extractStyles', true);
 // app.set('layout extractScripts', true);
 
-
 //use express router
 app.use('/', require('./routes'));
-
-
 //set our ejs view engine
 app.set("view engine", "ejs");
 app.set("views", './views');
