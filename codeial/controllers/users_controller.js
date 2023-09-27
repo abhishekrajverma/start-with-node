@@ -1,45 +1,85 @@
 const User = require("../models/user");
 
-module.exports.profile = (req,res) => {
-    return res.end('<h1>hello from profile</h1>')
+module.exports.profile = (req, res) => {
+    //  if the user can't be sign-in they can't access the profile routes
+    if(req.cookies.user_id){
+        User.findById(req.cookies.user_id)
+        .then((user) =>{
+            if(user){
+                return res.render('user_profile', {
+                    title: "User Profile",
+                    user : user
+                });
+            }
+            return res.redirect('/users/sign-in');
+        }).catch((err) => console.log(err));
+    }else{
+        return res.redirect('/users/sign-in')
+    }
 
 }
-module.exports.name = (req,res) => {
+module.exports.name = (req, res) => {
     return res.end('<h1>hello from name</h1>');
 }
 
 // render the sign up page
-module.exports.signUp = (req,res) => {
+module.exports.signUp = (req, res) => {
     return res.render('user_sign_up', {
-        title : 'Codeial | Sign Up'
+        title: 'Codeial | Sign Up'
     });
 }
 
 // render the sign in page
-module.exports.signIn = (req,res) => {
+module.exports.signIn = (req, res) => {
     return res.render('user_sign_in', {
-        title : 'Codeial | Sign In'
+        title: 'Codeial | Sign In'
     });
 }
 
 //get the sign up data
-module.exports.create =  async (req, res) =>{
-    if(req.body.password != req.body.confirm_password){
+module.exports.create =  (req, res) => {
+    if (req.body.password != req.body.confirm_password) {
         return res.redirect('back');
     }
-    User.findOne({email : req.body.email})
-    .then((err, user) =>{
-        if(err){console.log('error in finding user in signing up'); return}
-        if(!user){
-            User.create(req.body);
-            return res.redirect('/users/sign-in');
-        }else{
-            return res.redirect('back');
-        }
-    })
+    User.findOne({ email: req.body.email })
+        .then((user) => {
+            if (!user) {
+                User.create(req.body);
+                return res.redirect('/users/sign-in');
+            } else {
+                return res.redirect('back');
+            }
+        }).catch((err) => console.log(err));
 }
 
 //sign in and create a session for user
-module.exports.createSession = (req, res) =>{
-    
+module.exports.createSession =  (req, res) => {
+    //setps to authenticate
+    //find the user
+    User.findOne({email: req.body.email})
+        .then((user) => {
+            //handle if user is found in database
+            if (user) {
+                //handle password  which doesn't match
+                if(user.password != req.body.password){
+                    return res.redirect('back');
+                }
+                //handle session creation
+                res.cookie('user_id', user.id);
+                return res.redirect('/users/profile');
+
+            } else {
+                //handle if user is not found in database
+                return res.redirect('back');
+
+            }
+
+        }).catch((err) => console.log(err));
+
+
+
+
+
+
+
 }
