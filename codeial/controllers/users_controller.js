@@ -16,7 +16,9 @@ module.exports.profile = (req, res) => {
     }else{
         return res.redirect('/users/sign-in')
     }
-
+}
+module.exports.logout = (req, res)=>{
+    return res.redirect('/users/sign-in');
 }
 module.exports.name = (req, res) => {
     return res.end('<h1>hello from name</h1>');
