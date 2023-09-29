@@ -28,15 +28,14 @@ module.exports.create =  async (req, res) =>{
         return res.redirect('back');
     }
     User.findOne({email : req.body.email})
-    .then((err, user) =>{
-        if(err){console.log('error in finding user in signing up'); return}
+    .then((user) =>{
         if(!user){
             User.create(req.body);
             return res.redirect('/users/sign-in');
         }else{
             return res.redirect('back');
         }
-    })
+    }).catch((err) => {console.log(`error in finding user in signing up : ${err}`); return})
 }
 
 //sign in and create a session for user
