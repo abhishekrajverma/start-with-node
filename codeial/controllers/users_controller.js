@@ -1,6 +1,7 @@
 const User = require("../models/user");
 
 module.exports.profile = async (req, res) => {
+    const user = await User.findOne(req.body.name)
     return res.render('user_profile', {
         title: "User | Profile",
     })
@@ -11,9 +12,6 @@ module.exports.name = (req, res) => {
 
 // render the sign up page
 module.exports.signUp = (req, res) => {
-    if (req.isAuthenticated) {
-        return res.redirect('/users/profile')
-    }
     return res.render('user_sign_up', {
         title: 'Codeial | Sign Up'
     });
@@ -48,14 +46,4 @@ module.exports.create = async (req, res) => {
 //sign in and create a session for user
 module.exports.createSession = (req, res) => {
     return res.redirect('/users/profile');
-}
-
-module.exports.destroySession = function(req, res, next){
-    req.logout((err) =>{
-        if(err){
-            return next(err);
-        }
-        return res.redirect('/');
-    });
-    return res.redirect('/');
 }
