@@ -1,3 +1,63 @@
+/* Navbar styles */
+nav {
+    background-color: #333;
+    /* Background color for the navbar */
+    padding: 10px 0;
+    /* Add some padding around the navbar */
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    /* Remove list bullets */
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    /* Display list items horizontally */
+    margin-right: 20px;
+    /* Add some spacing between navbar items */
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+    /* Remove right margin from the last list item */
+}
+
+nav a {
+    text-decoration: none;
+    /* Remove underlines from links */
+    color: #fff;
+    /* Text color for links */
+    font-weight: bold;
+    /* Make the text bold */
+    font-size: 16px;
+    /* Adjust the font size */
+}
+
+/* Change link color on hover */
+nav a:hover {
+    color: #ff5733;
+    /* Change text color on hover */
+}
+
+/* Media query for screens smaller than 768px */
+@media screen and (max-width: 768px) {
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        /* Display items vertically */
+    }
+
+    nav ul li {
+        margin-right: 0;
+        /* Remove right margin for list items */
+        margin-bottom: 10px;
+        /* Add spacing between list items */
+    }
+}
+
 /* Center-align the form container */
 body {
     display: flex;
