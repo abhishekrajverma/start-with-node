@@ -18,6 +18,9 @@ module.exports.signUp = (req, res) => {
 
 // render the sign in page
 module.exports.signIn = (req, res) => {
+    if (req.isAuthenticated) {
+        return res.redirect('/users/profile')
+    }
     return res.render('user_sign_in', {
         title: 'Codeial | Sign In'
     });
