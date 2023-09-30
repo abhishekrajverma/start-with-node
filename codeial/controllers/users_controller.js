@@ -1,10 +1,10 @@
 const User = require("../models/user");
 
 module.exports.profile = async (req, res) => {
+    const user = await User.findOne(req.body.name)
     return res.render('user_profile', {
         title: "User | Profile",
-
-
+        user : user
     })
 }
 module.exports.name = (req, res) => {
