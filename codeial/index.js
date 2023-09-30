@@ -7,7 +7,7 @@ const port = 8000;
 //database setup
 const db = require('./config/mongoose');
 
-//eused for session cookie
+//used for session cookie
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
