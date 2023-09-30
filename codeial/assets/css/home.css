@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-/* Reset some default styles for list and anchor tags */
-=======
->>>>>>> fix/error
 ul, li {
     list-style: none;
     padding: 0;
@@ -63,8 +59,4 @@ ul, li {
         margin-left: auto;
         margin-right: 10px;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> fix/error
