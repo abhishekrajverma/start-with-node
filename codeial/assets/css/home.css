@@ -1,0 +1,62 @@
+ul, li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style the navbar */
+.navbar {
+    background-color: #333; /* Background color for the navbar */
+    color: #fff; /* Text color for links */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Style the navigation logo */
+.nav-logo {
+    font-size: 24px;
+}
+
+.nav-logo a {
+    text-decoration: none; /* Remove underlines from links */
+    color: #fff; /* Text color for links */
+    font-weight: bold; /* Make the text bold */
+}
+
+/* Style the navigation list */
+.nav-list {
+    display: flex; /* Display items horizontally */
+    list-style: none;
+}
+
+/* Style the navigation links */
+.nav-list a {
+    text-decoration: none; /* Remove underlines from links */
+    color: #fff; /* Text color for links */
+    font-weight: bold; /* Make the text bold */
+    margin: 0 15px; /* Add some spacing between links */
+}
+
+/* Style the navigation links on hover */
+.nav-list a:hover {
+    color: #ff5733; /* Change text color on hover */
+}
+
+/* Style the authentication links (Sign In and Sign Up) */
+.nav-auth a {
+    text-decoration: none; /* Remove underlines from links */
+    color: #fff; /* Text color for links */
+    font-weight: bold; /* Make the text bold */
+    margin-left: 20px; /* Add spacing between authentication links */
+}
+
+/* Media query for screens smaller than 768px */
+@media screen and (max-width: 768px) {
+    /* Center-align the authentication links */
+    .nav-auth {
+        margin-left: auto;
+        margin-right: 10px;
+    }
+}
