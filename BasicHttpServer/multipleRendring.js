@@ -1,7 +1,5 @@
 const http = require('http');
 const fs = require('fs');
-const { error } = require('console');
-const { data } = require('jquery');
 
 const myServer = http.createServer((req,res)=>{
     console.log(req.url);
@@ -27,4 +25,4 @@ const myServer = http.createServer((req,res)=>{
 });
 
 
-myServer.listen(8000,()=>console.log(`Server Started`));
+myServer.listen(8000,()=>console.log(`Server Started at port : ${8000}`));
