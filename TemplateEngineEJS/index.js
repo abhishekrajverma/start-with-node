@@ -9,6 +9,7 @@ const app = exprees();
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.set("views", "./views");
 //middleware
 app.use(exprees.urlencoded());
 //serving our static files such as CSS, Images, javascript
