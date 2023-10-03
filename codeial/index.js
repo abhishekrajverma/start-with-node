@@ -3,7 +3,6 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
 const port = 8000;
-
 //database setup
 const db = require('./config/mongoose');
 
@@ -12,6 +11,16 @@ const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const MongoStore = require('connect-mongo');
+const sassMiddleware = require('node-sass-middleware');
+
+// app.use(sassMiddleware({
+//     /* Options */
+//     src: './assets/scss',
+//     dest: './assests/css',
+//     debug: true,
+//     outputStyle: 'extended',
+//     prefix:  '/css'  
+// }));
 
 // 
 app.use(express.urlencoded());
@@ -57,10 +66,6 @@ app.use('/', require('./routes'));
 //extract style and scripts from sub pages into the layout
 // app.set('layout extractStyles', true);
 // app.set('layout extractScripts', true);
-
-
-
-
 
 
 app.listen(port, (err) => {

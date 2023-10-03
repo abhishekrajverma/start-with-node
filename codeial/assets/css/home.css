@@ -9,6 +9,16 @@
 body {
     font-family: "Poppins", sans-serif;
 }
+a{
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    color: red;
+}
+#arrow{
+    color: red;
+}
 
 header {
     background-color: #25b79f;
