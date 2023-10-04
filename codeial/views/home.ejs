@@ -16,18 +16,18 @@
         <nav class="navbar">
             <div class="navbar-container container">
                 <div>
-                    <h1 class="navbar-brand">Abhishek Raj</h1>
+                    <h1 class="navbar-brand"><%= user.name %></h1>
                 </div>
                 <ul class="menu-items">
-                    <li><a href="/users/sign-in">Sign In</a></li>
-                    <li><a href="#contact-me">Contact</a></li>
+                    <li><a href="/users/sign-out">Sign Out</a></li>
+                    <li><a href="/users/Profile">Show Profile</a></li>
                     <li><a href="/users/feedback">Feedback</a></li>
                 </ul>
             </div>
         </nav>
         <div class="home-content" id="home-page">
             <div class="name">
-                <h1>Hi, I'm Abhishek</h1>
+                <h1>Hi, I'm <%= user.name %></h1>
                 <p>A Web Developer in training.</p>
             </div>
             <div class="angle-down-icon">
@@ -214,7 +214,7 @@
             <div class="contact-content">
                 <h2>Contact Me</h2>
                 <p class="mail">
-                    Get in touch with me <i id="arrow" class="fas fa-arrow-right"></i> abhishekr359@gmail.com
+                    Get in touch with me <i id="arrow" class="fas fa-arrow-right"></i> <%= user.email %>
                 </p>
                 <p class="links">Or find me on:</p>
                 <!-- <a href="https://www.linkedin.com/in/abhishekrajverma/" target="blank"><i -->
