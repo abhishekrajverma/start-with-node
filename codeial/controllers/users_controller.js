@@ -5,6 +5,9 @@ module.exports.profile = (req, res) => {
         title: "User | Profile",
     })
 }
+module.exports.feedback = (req, res) => {
+    return res.render('feedback')
+}
 module.exports.name = (req, res) => {
     return res.end('<h1>hello from name</h1>');
 }
