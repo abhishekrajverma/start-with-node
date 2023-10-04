@@ -8,6 +8,7 @@ router.get('/profile',passport.checkAuthentication ,usersController.profile);
 router.get('/name', usersController.name);
 router.get('/sign-up', usersController.signUp);
 router.get('/sign-in', usersController.signIn);
+router.get('/feedback', usersController.feedback);
 
 router.get('/sign-out', usersController.destroySession);
 
