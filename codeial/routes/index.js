@@ -14,5 +14,4 @@ router.use('/post', require('./post'));
 
 console.log("hello from routes");
 
-
 module.exports = router;
