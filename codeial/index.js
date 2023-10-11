@@ -3,8 +3,12 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
 const port = 8000;
+const expressLayouts = require('express-ejs-layouts');
 //database setup
 const db = require('./config/mongoose');
+
+
+
 
 //used for session cookie
 const session = require('express-session');
@@ -32,7 +36,10 @@ app.use(cookieParser());
 // assets setup such as - css, images, and javascript
 app.use(express.static('./assets'));
 
-//const expressLayouts = require('express-ejs-layouts');
+app.use(expressLayouts);
+//extract style and scripts from sub pages into the layout
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
 
 //set our ejs view engine
 app.set("view engine", "ejs");
@@ -62,10 +69,10 @@ app.use(passport.setAuthenticatedUser);
 app.use('/', require('./routes'));
 
 
-// app.use(expressLayouts);
+app.use(expressLayouts);
 //extract style and scripts from sub pages into the layout
-// app.set('layout extractStyles', true);
-// app.set('layout extractScripts', true);
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
 
 
 app.listen(port, (err) => {
