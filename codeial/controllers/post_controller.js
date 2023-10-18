@@ -11,7 +11,7 @@ module.exports.create = async (req,res) =>{
     try{
         const user = await Post.create({
             content : req.body.content,
-            user : req.user.id
+            user : req.user._id
         });
         return res.redirect('back')
 
