@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Post = require("../models/post");
 
 module.exports.profile = (req, res) => {
     return res.render('user_profile', {
@@ -6,11 +7,15 @@ module.exports.profile = (req, res) => {
         
     })
 }
-module.exports.feedback = (req, res) => {
+
+module.exports.feedback = async (req, res) => {
+    const result = await Post.find({}).populate('user').exec();
     return res.render('feedback',{
+        posts : result,
         layout: "feedback"
     })
 }
+
 module.exports.example = (req, res) => {
     return res.render('example', {
         title: "User | example",
