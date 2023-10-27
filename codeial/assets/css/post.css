@@ -53,3 +53,28 @@
 #new-post-form input[type="submit"]:hover {
     background-color: #555;
 }
+#posts-list-container {
+    border: 1px solid #ccc; /* Add a border */
+    padding: 10px; /* Add some padding to the container */
+    margin-top: 10px; /* Add top margin to separate it from the section above */
+    background-color: #f7f7f7; /* Set a background color */
+}
+
+#posts-list-container ul {
+    list-style: none; /* Remove bullet points from the list */
+}
+
+#posts-list-container li {
+    margin-bottom: 20px; /* Add space between individual posts */
+    padding: 10px; /* Add padding to individual posts */
+    border: 1px solid #ddd; /* Add a border to individual posts */
+    background-color: #fff; /* Set a background color for individual posts */
+}
+
+#posts-list-container p {
+    margin: 0; /* Remove default margins from paragraphs inside posts */
+}
+
+#posts-list-container small {
+    color: #777; /* Set a subdued color for the user's name */
+}
