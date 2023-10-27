@@ -11,7 +11,7 @@ router.get('/name', usersController.name);
 router.get('/sign-up', usersController.signUp);
 router.get('/sign-in', usersController.signIn);
 router.get('/example', usersController.example);
-router.get('/feedback',passport.checkAuthentication, usersController.feedback);
+router.get('/feedback',passport.checkAuthentication, usersController.post);
 
 router.get('/sign-out', usersController.destroySession);
 

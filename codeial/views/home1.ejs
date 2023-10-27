@@ -1,7 +1,33 @@
-<ul>
-    <li>
-        <p>
-            <a href="/users/sign-in">SignIn</a>
-        </p>
-    </li>
-</ul>
+<link rel="stylesheet" href="/css/post.css">
+<link rel="stylesheet" href="/css/partials/footer.css">
+<link rel="stylesheet" href="/css/partials/header.css">
+
+<title><%= title %></title>
+<%- include('./partials/header'); -%>
+<section id="feed-posts">
+    <h4>Posts</h4>
+    <% if (locals.user) { %>
+    <form action="/post/feedback" id="new-post-form" method="POST">
+        <textarea name="content" cols="30" rows="3" placeholder="Type Here..."></textarea>
+        <input type="submit" value="Post">
+    </form>
+    <% } %>
+    <div id="posts-list-container">
+        <ul>
+            <% for(post of posts){ %>
+                
+            <li>
+                <p>
+                    <%= post.content %>
+                    <br>
+                    <small>
+                        <%= post.user.name %>
+                    </small>
+                </p>
+                
+            </li>
+                
+            <%} %>
+        </ul>
+    </div>
+</section>

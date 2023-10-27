@@ -8,11 +8,12 @@ module.exports.profile = (req, res) => {
     })
 }
 
-module.exports.feedback = async (req, res) => {
+module.exports.post= async (req, res) => {
     const result = await Post.find({}).populate('user').exec();
-    return res.render('feedback',{
+    return res.render('home1',{
         posts : result,
-        layout: "feedback"
+        title : "User | posts",
+        layout : "home1"
     })
 }
 
