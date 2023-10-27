@@ -4,11 +4,18 @@
         <i class="fas fa-bars"></i>
     </label>
     <label class="logo">IndiaResult.com</label>
-    <ul>
-        <li><a class="active" href="#">Home</a></li>
-        <li><a href="/users/example">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Feedback</a></li>
-    </ul>
+
+    <% if (locals.user) {%>
+        <ul>
+            <li><a class="active" href="/">Home</a></li>
+            <li><a href="/users/example">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="/users/sign-out">Sign Out</a></li>
+        </ul>
+        <%} else {%>
+            <ul>
+                <li><a href="/users/sign-in">Sign In </a></li>
+            </ul>
+            <% } %>
+    
 </nav>
