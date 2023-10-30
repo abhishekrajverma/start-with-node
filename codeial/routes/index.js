@@ -11,6 +11,7 @@ router.get('/home1',homeController.home1);
 //syntax- router.use('/routerName', './routerFile')
 router.use('/users', require('./users'));
 router.use('/post', require('./post'));
+router.use('/comments', require('./comments'));
 
 console.log("hello from routes");
 
