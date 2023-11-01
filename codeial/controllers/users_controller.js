@@ -4,23 +4,35 @@ const Post = require("../models/post");
 module.exports.profile = (req, res) => {
     return res.render('user_profile', {
         title: "User | Profile",
-        
+
     })
 }
 
-module.exports.post= async (req, res) => {
-    const result = await Post.find({}).populate('user').exec();
-    return res.render('home1',{
-        posts : result,
-        title : "User | posts",
-        layout : "home1"
-    })
+module.exports.post = async (req, res) => {
+    try {
+        const result = await Post.find({})
+            .populate({
+                path: 'comments',
+                populate : 'user'
+            })
+            .populate({
+                path: 'user'
+            })
+            .exec();
+        return res.render('home1', {
+            posts: result,
+            title: "codeial | posts",
+            layout: "home1"
+        })
+    } catch (error) {
+        console.log("Error fetching and populating data:", error);
+    }
 }
 
 module.exports.example = (req, res) => {
     return res.render('example', {
         title: "User | example",
-        
+
     })
 }
 
@@ -38,7 +50,7 @@ module.exports.signUp = (req, res) => {
 
 // render the sign in page
 module.exports.signIn = (req, res) => {
-    if (req.isAuthenticated()){
+    if (req.isAuthenticated()) {
         return res.redirect('/users/profile');
     }
     return res.render('user_sign_in', {

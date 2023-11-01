@@ -6,21 +6,21 @@ const commentSchema = new Schema(
     {
         content: {
             type: String,
-            required: true,
+            required: true
         },
         //comments belongs to the user
         user: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
+            ref: "User"
         },
         post: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Post",
-        },
+        }
     },
     {
         timestamps: true,
-    })
+    });
 
 const Comment = mongoose.model('Comment' , commentSchema);
 
