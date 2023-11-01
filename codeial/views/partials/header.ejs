@@ -3,13 +3,12 @@
     <label for="check" class="checkbtn">
         <i class="fas fa-bars"></i>
     </label>
-    <label class="logo">IndiaResult.com</label>
+    <label class="logo"><%= user.name%></label>
 
     <% if (locals.user) {%>
         <ul>
             <li><a class="active" href="/">Home</a></li>
             <li><a href="/users/example">About</a></li>
-            <li><a href="#">Services</a></li>
             <li><a href="/users/sign-out">Sign Out</a></li>
         </ul>
         <%} else {%>

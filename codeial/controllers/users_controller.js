@@ -15,9 +15,7 @@ module.exports.post = async (req, res) => {
                 path: 'comments',
                 populate : 'user'
             })
-            .populate({
-                path: 'user'
-            })
+            .populate('user')
             .exec();
         return res.render('home1', {
             posts: result,
@@ -32,7 +30,12 @@ module.exports.post = async (req, res) => {
 module.exports.example = (req, res) => {
     return res.render('example', {
         title: "User | example",
+    })
+}
 
+module.exports.tic = (req, res) => {
+    return res.render('tic-tac-toe', {
+        layout: 'tic-tac-toe'
     })
 }
 
@@ -83,6 +86,6 @@ module.exports.createSession = (req, res) => {
 module.exports.destroySession = function (req, res, next) {
     req.logout(function (err) {
         if (err) { return next(err); }
-        return res.redirect('/home1');
+        return res.redirect('/');
     });
 }

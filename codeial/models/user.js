@@ -15,6 +15,27 @@ const contactSchema = new Schema({
     name :{
         type : String,
         required: true
+    },
+    about :{
+        type : String,
+        required : true
+    },
+    skills :{
+        type : String,
+        required : true
+    },
+    job :{
+        type : String,
+        required : true
+    },
+    phone :
+    {
+        type : Number,
+        required : true
+    },
+    university :{
+        type : String,
+        required : true
     }
 
 }, {

@@ -12,6 +12,7 @@ router.get('/home1',homeController.home1);
 router.use('/users', require('./users'));
 router.use('/post', require('./post'));
 router.use('/comments', require('./comments'));
+router.use('/tic-tac-toe', require('./tic-tac-toe'));
 
 console.log("hello from routes");
 

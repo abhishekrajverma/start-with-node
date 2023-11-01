@@ -22,14 +22,15 @@
                 <ul class="menu-items">
                     <li><a href="/users/sign-out">Sign Out</a></li>
                     <li><a href="/users/Profile">Show Profile</a></li>
-                    <li><a href="/users/feedback">Show Posts</a></li>
+                    <!-- <li><a href="/users/feedback">Show Posts</a></li> -->
+                    <li><a href="/tic-tac-toe/tic-tac-toe">Play Game</a></li>
                 </ul>
             </div>
         </nav>
         <div class="home-content" id="home-page">
             <div class="name">
                 <h1>Hi, I'm <%= user.name %></h1>
-                <p>A Web Developer in training.</p>
+                <p><%= user.job %></p>
             </div>
             <div class="angle-down-icon">
                 <a href="#about"><i class="fas fa-angle-down"></i></a>
@@ -45,7 +46,7 @@
                     </div>
                     <img src="https://i.postimg.cc/Hx4nChpH/fbavatar-1630400663387-6838396024049256103.png"
                         alt="image" />
-                    <p>
+                    <!-- <p>
                         As a dedicated and innovative Software Developer, I thrive on transforming ideas into reality
                         through cutting-edge technology. With a solid foundation in computer science and a passion for
                         problem-solving, I am committed to delivering high-quality, scalable, and efficient software
@@ -68,6 +69,9 @@
                         I am open to exciting opportunities that allow me to collaborate with like-minded professionals
                         and contribute my expertise to projects that make a difference. Let's connect and explore how we
                         can create something remarkable together!
+                    </p> -->
+                    <p>
+                        <%= user.about%>
                     </p>
                     <div class="work-arrow">
                         <p>
@@ -81,6 +85,14 @@
                             <h1 class="skills-heading">My Skills</h1>
                         </div>
                         <div class="skills-bar">
+                            <div class="bar">
+                                <div class="info">
+                            <span><%=user.skills%></span>
+                        </div>
+                    </div>
+                </div>
+                        
+                        <!-- <div class="skills-bar">
                             <div class="bar">
                                 <div class="info">
                                     <span>HTML</span>
@@ -160,7 +172,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
     <section id="my-works">
         <div class="portfolio">
